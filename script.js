@@ -156,16 +156,30 @@ let RN1 = function () {
 };
 let ret = function () {
   let returnedAr = localStorage.getItem('result');
-  let itemAr = JSON.parse(returnedAr);
-  console.log(itemAr);
   let niw = document.getElementById('niw');
   let sol = document.getElementById('sol');
   let ward = document.getElementById('ward');
-  niw.textContent = itemAr[0];
-  sol.textContent = itemAr[1];
-  ward.textContent = itemAr[2];
+  if (!returnedAr) {
+    console.log('Creating New Array in localStorage.');
+    niw.textContent = 0;
+    sol.textContent = 0;
+    ward.textContent = 0;
+    myArray[0] = 0;
+    myArray[1] = 0;
+    myArray[2] = 0;
+    localStorage.setItem('result', JSON.stringify(myArray));
+  } else {
+    let returnedAr = localStorage.getItem('result');
+    let itemAr = JSON.parse(returnedAr);
+    console.log(itemAr);
+    let niw = document.getElementById('niw');
+    let sol = document.getElementById('sol');
+    let ward = document.getElementById('ward');
+    niw.textContent = itemAr[0];
+    sol.textContent = itemAr[1];
+    ward.textContent = itemAr[2];
+  }
 };
-
 ret();
 
 let draw = function () {
